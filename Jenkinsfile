@@ -20,7 +20,7 @@ def skopeoCopy(def skopeoToken, def srcProject, def destProject, def appName, de
     docker://image-registry.openshift-image-registry.svc:5000/${srcProject}/${appName}:${imageTag} \
     docker://image-registry.openshift-image-registry.svc:5000/${destProject}/${appName}:${imageTag}"""
 }
-/*
+
 def deployApplication(def appName, def imageTag, def project, def replicas) {
     openshift.withProject(project) {
         dir("openshift") {
@@ -109,4 +109,4 @@ pipeline {
         }
     }
 }
-*/
+
