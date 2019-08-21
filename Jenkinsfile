@@ -2,7 +2,6 @@
 
 def appName = "birthday-paradox"
 def replicas = "1"
-/*
 def devProject = ${GITHUB_USERNAME}-dev 
 def testProject = ${GITHUB_USERNAME}-test
 def prodProject = ${GITHUB_USERNAME}-prod
@@ -109,4 +108,4 @@ pipeline {
             }
         }
     }
-}*/
+}
