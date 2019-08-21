@@ -79,14 +79,14 @@ pipeline {
                     skopeoCopy(skopeoToken, devProject, testProject, appName, imageTag)
                 }
             }
-        }/*
+        }
         stage("Deploy Application to Test") {
             steps {
                 script {
 		    deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
-        }
+        }/*
         stage("Prompt for Prod Approval") {
             steps {
                 input "Deploy to prod?"
