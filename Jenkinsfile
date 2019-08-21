@@ -43,13 +43,13 @@ pipeline {
                     imageTag = getVersionFromPom()
                 }
             }
-        }/*
+        }
         stage("Build & Test") {
             steps {
                 // TODO: Build, Test, and Package birthday-paradox using Maven
                 sh "mvn clean package"
             }
-        }
+        }/*
         stage("Create Image") {
             steps {
                 script {
