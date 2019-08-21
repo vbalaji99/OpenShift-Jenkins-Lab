@@ -17,8 +17,8 @@ def getVersionFromPom() {
 def skopeoCopy(def skopeoToken, def srcProject, def destProject, def appName, def imageTag) {
     sh """skopeo copy --src-tls-verify=false --src-creds=jenkins:${skopeoToken} \
     --dest-tls-verify=false --dest-creds=jenkins:${skopeoToken} \
-    docker://image-registry.openshift-image-registry.svc:5000/${srcProject}/${appName}:${imageTag} \
-    docker://image-registry.openshift-image-registry.svc:5000/${destProject}/${appName}:${imageTag}"""
+    docker://docker-registry.default.svc:5000/${srcProject}/${appName}:${imageTag} \
+    docker://docker-registry.default.svc:5000/${destProject}/${appName}:${imageTag}"""
 }
 
 def deployApplication(def appName, def imageTag, def project, def replicas) {
