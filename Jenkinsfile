@@ -91,7 +91,7 @@ pipeline {
             steps {
                 input "Deploy to prod?"
             }
-        }/*
+        }
         stage("Copy image to Prod") {
             agent { label "jenkins-agent-skopeo" }
             steps {
@@ -107,6 +107,5 @@ pipeline {
                 }
             }
         }
-    */
     }
 }
