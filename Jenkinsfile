@@ -2,14 +2,13 @@
 
 def appName = "birthday-paradox"
 def replicas = "1"
-/*
-def devProject = ${GITHUB_USERNAME}-dev 
-def testProject = ${GITHUB_USERNAME}-test
-def prodProject = ${GITHUB_USERNAME}-prod
+def devProject = "${GITHUB_USERNAME}-dev" 
+def testProject = "${GITHUB_USERNAME}-test"
+def prodProject = "${GITHUB_USERNAME}-prod"
 
 def skopeoToken
 def imageTag
-
+/*
 def getVersionFromPom() {
     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
     matcher ? matcher[0][1] : null
