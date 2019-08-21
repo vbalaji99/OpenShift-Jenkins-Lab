@@ -86,12 +86,12 @@ pipeline {
 		    deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
-        }/*
+        }
         stage("Prompt for Prod Approval") {
             steps {
                 input "Deploy to prod?"
             }
-        }
+        }/*
         stage("Copy image to Prod") {
             agent { label "jenkins-agent-skopeo" }
             steps {
