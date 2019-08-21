@@ -30,7 +30,7 @@ def deployApplication(def appName, def imageTag, def project, def replicas) {
         openshift.selector("deployment", appName).scale("--replicas=${replicas}")
     }
 }
-/*
+
 pipeline {
     agent { label "maven" }
     stages {
@@ -43,7 +43,7 @@ pipeline {
                     imageTag = getVersionFromPom()
                 }
             }
-        }
+        }/*
         stage("Build & Test") {
             steps {
                 // TODO: Build, Test, and Package birthday-paradox using Maven
@@ -108,5 +108,6 @@ pipeline {
             }
         }
     }
-}
 */
+}
+
