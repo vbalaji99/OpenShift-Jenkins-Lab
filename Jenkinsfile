@@ -71,7 +71,7 @@ pipeline {
 		    deployApplication(appName, imageTag, devProject, replicas)
                 }
             }
-        }/*
+        }
         stage("Copy Image to Test") {
             agent { label "jenkins-agent-skopeo" }
             steps {
@@ -79,7 +79,7 @@ pipeline {
                     skopeoCopy(skopeoToken, devProject, testProject, appName, imageTag)
                 }
             }
-        }
+        }/*
         stage("Deploy Application to Test") {
             steps {
                 script {
