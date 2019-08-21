@@ -49,7 +49,7 @@ pipeline {
                 // TODO: Build, Test, and Package birthday-paradox using Maven
                 sh "mvn clean package"
             }
-        }/*
+        }
         stage("Create Image") {
             steps {
                 script {
@@ -64,7 +64,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }/*
         stage("Deploy Application to Dev") {
             steps {
                 script {
