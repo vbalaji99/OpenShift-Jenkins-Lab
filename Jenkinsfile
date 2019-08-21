@@ -2,9 +2,9 @@
 
 def appName = "birthday-paradox"
 def replicas = "1"
-def devProject = otatman-dev 
-def testProject = otatman-test
-def prodProject = otatman-prod
+def devProject = "otatman-dev" 
+def testProject = "otatman-test"
+def prodProject = "otatman-prod"
 
 def skopeoToken
 def imageTag
