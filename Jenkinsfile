@@ -8,12 +8,12 @@ def prodProject = "otatman-prod"
 
 def skopeoToken
 def imageTag
-/*
+
 def getVersionFromPom() {
     def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
     matcher ? matcher[0][1] : null
 }
-
+/*
 def skopeoCopy(def skopeoToken, def srcProject, def destProject, def appName, def imageTag) {
     sh """skopeo copy --src-tls-verify=false --src-creds=jenkins:${skopeoToken} \
     --dest-tls-verify=false --dest-creds=jenkins:${skopeoToken} \
