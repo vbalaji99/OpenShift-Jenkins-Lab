@@ -30,7 +30,7 @@ def deployApplication(def appName, def imageTag, def project, def replicas) {
         openshift.selector("deployment", appName).scale("--replicas=${replicas}")
     }
 }
-
+/*
 pipeline {
     agent { label "maven" }
     stages {
@@ -109,4 +109,4 @@ pipeline {
         }
     }
 }
-
+*/
