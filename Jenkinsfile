@@ -1,4 +1,10 @@
-
+/*
+This Jenkinsfile contains pipeline code that will execute CI/CD pipeline with following stages
+1. Build the project 
+2. Execute unit tests
+3. Create an immutable container image
+4. Deploy the application to Dev, Test, and Prod
+*/
 
 def appName = "birthday-paradox"
 def replicas = "1"
