@@ -20,7 +20,6 @@ def skopeoCopy(def skopeoToken, def srcProject, def destProject, def appName, de
 }
 
 def deployApplication(def appName, def imageTag, def project, def replicas) {
-    openshift.withCluster(){
     openshift.withProject(project) {
         dir("openshift") {
             def result = openshift.process(readFile(file:"deploy.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}", "-p", "APPLICATION_PROJECT=${project}")
@@ -28,7 +27,6 @@ def deployApplication(def appName, def imageTag, def project, def replicas) {
         }
         openshift.selector("deployment", appName).scale("--replicas=${replicas}")
     }
-   }
 }
 
 pipeline {
@@ -37,9 +35,11 @@ pipeline {
         stage("Setup") {
             steps {
                 script {
+                    openshift.withCluster(){
                     echo "in script"
                     openshift.withProject("otatman-dev") {
                         skopeoToken = openshift.raw("sa get-token jenkins").out.trim()
+                    }
                     }
                     echo "got skopeotoken"
                     imageTag = getVersionFromPom()
