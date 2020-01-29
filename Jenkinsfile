@@ -57,7 +57,7 @@ pipeline {
                     openshift.withCluster(){
                     openshift.withProject(devProject) {
                         dir("openshift") {
-                            def result = openshift.process(readFile(file:"build.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}")
+                            def result = openshift.process(readFile(file:"openshift/build.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}")
                             openshift.apply(result)
                         }
                         dir("target") {
