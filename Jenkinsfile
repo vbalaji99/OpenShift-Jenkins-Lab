@@ -46,11 +46,11 @@ pipeline {
                 }
             }
         }
-        /*stage("Build & Test") {
+        stage("Build & Test") {
             steps {
                 sh "mvn clean package"
             }
-        }*/
+        }
         stage("Create Image") {
             steps {
                 script {
