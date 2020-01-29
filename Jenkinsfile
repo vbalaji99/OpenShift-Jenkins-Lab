@@ -47,7 +47,7 @@ pipeline {
                 sh "mvn clean package"
             }
         }
-        stage("Create Image") {
+        /*stage("Create Image") {
             steps {
                 script {
                     openshift.withProject(devProject) {
@@ -61,7 +61,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
         stage("Deploy Application to Dev") {
             steps {
                 script {
