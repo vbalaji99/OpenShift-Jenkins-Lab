@@ -35,7 +35,7 @@ pipeline {
         stage("Setup") {
             steps {
                 script {
-                    openshift.withProject(devProject) {
+                    openshift.withProject(otatman-dev) {
                         skopeoToken = openshift.raw("sa get-token jenkins").out.trim()
                     }
                     imageTag = getVersionFromPom()
