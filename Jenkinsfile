@@ -35,23 +35,26 @@ pipeline {
         stage("Setup") {
             steps {
                 script {
+                    openshift.withCluster(){
                     echo "in script"
-                    openshift.withProject(devProject) {
+                    openshift.withProject("otatman-dev") {
                         skopeoToken = openshift.raw("sa get-token jenkins").out.trim()
+                    }
                     }
                     echo "got skopeotoken"
                     imageTag = getVersionFromPom()
                 }
             }
         }
-        /*stage("Build & Test") {
+        stage("Build & Test") {
             steps {
                 sh "mvn clean package"
             }
-        }*/
-        /*stage("Create Image") {
+        }
+        stage("Create Image") {
             steps {
                 script {
+                    openshift.withCluster(){
                     openshift.withProject(devProject) {
                         dir("openshift") {
                             def result = openshift.process(readFile(file:"build.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}")
@@ -61,9 +64,10 @@ pipeline {
                             openshift.selector("bc", appName).startBuild("--from-file=${appName}-${imageTag}.jar").logs("-f")
                         }
                     }
+                    }
                 }
             }
-        }*/
+        }
         /*stage("Deploy Application to Dev") {
             steps {
                 script {
