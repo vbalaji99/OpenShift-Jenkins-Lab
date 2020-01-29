@@ -32,7 +32,7 @@ def deployApplication(def appName, def imageTag, def project, def replicas) {
 pipeline {
     agent { label "maven" }
     stages {
-        stage("Setup") {
+        /*stage("Setup") {
             steps {
                 script {
                     openshift.withProject(devProject) {
@@ -41,7 +41,7 @@ pipeline {
                     imageTag = getVersionFromPom()
                 }
             }
-        }
+        }*/
         stage("Build & Test") {
             steps {
                 sh "mvn clean package"
