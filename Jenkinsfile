@@ -1,16 +1,8 @@
-/*
-This Jenkinsfile contains pipeline code that will execute CI/CD pipeline with following stages
-1. Build the project 
-2. Execute unit tests
-3. Create an immutable container image
-4. Deploy the application to Dev, Test, and Prod
-*/
-
 def appName = "birthday-paradox"
 def replicas = "1"
-def devProject = "jtatman-dev" 
-def testProject = "jtatman-test"
-def prodProject = "jtatman-prod"
+def devProject = // TODO: Your dev project name goes here
+def testProject = // TODO: Your test project name goes here
+def prodProject = // TODO: Your prod project name goes here
 
 def skopeoToken
 def imageTag
@@ -23,8 +15,8 @@ def getVersionFromPom() {
 def skopeoCopy(def skopeoToken, def srcProject, def destProject, def appName, def imageTag) {
     sh """skopeo copy --src-tls-verify=false --src-creds=jenkins:${skopeoToken} \
     --dest-tls-verify=false --dest-creds=jenkins:${skopeoToken} \
-    docker://docker-registry.default.svc:5000/${srcProject}/${appName}:${imageTag} \
-    docker://docker-registry.default.svc:5000/${destProject}/${appName}:${imageTag}"""
+    docker://image-registry.openshift-image-registry.svc:5000/${srcProject}/${appName}:${imageTag} \
+    docker://image-registry.openshift-image-registry.svc:5000/${destProject}/${appName}:${imageTag}"""
 }
 
 def deployApplication(def appName, def imageTag, def project, def replicas) {
@@ -52,7 +44,6 @@ pipeline {
         }
         stage("Build & Test") {
             steps {
-                // TODO: Build, Test, and Package birthday-paradox using Maven
                 sh "mvn clean package"
             }
         }
@@ -61,8 +52,8 @@ pipeline {
                 script {
                     openshift.withProject(devProject) {
                         dir("openshift") {
-				def result = openshift.process(readFile(file:"build.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}")
-				openshift.apply(result)
+                            def result = openshift.process(readFile(file:"build.yaml"), "-p", "APPLICATION_NAME=${appName}", "-p", "IMAGE_TAG=${imageTag}")
+                            openshift.apply(result)
                         }
                         dir("target") {
                             openshift.selector("bc", appName).startBuild("--from-file=${appName}-${imageTag}.jar").logs("-f")
@@ -74,7 +65,7 @@ pipeline {
         stage("Deploy Application to Dev") {
             steps {
                 script {
-		    deployApplication(appName, imageTag, devProject, replicas)
+                    deployApplication(appName, imageTag, devProject, replicas)
                 }
             }
         }
@@ -89,7 +80,7 @@ pipeline {
         stage("Deploy Application to Test") {
             steps {
                 script {
-		    deployApplication(appName, imageTag, testProject, replicas)
+                    deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
         }
@@ -109,7 +100,7 @@ pipeline {
         stage("Deploy Application to Prod") {
             steps {
                 script {
-		    deployApplication(appName, imageTag, prodProject, replicas)
+                    deployApplication(appName, imageTag, prodProject, replicas)
                 }
             }
         }
