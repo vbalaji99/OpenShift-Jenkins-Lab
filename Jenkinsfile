@@ -8,9 +8,9 @@ This Jenkinsfile contains pipeline code that will execute CI/CD pipeline with fo
 
 def appName = "birthday-paradox"
 def replicas = "1"
-def devProject = "otatman-dev" 
-def testProject = "otatman-test"
-def prodProject = "otatman-prod"
+def devProject = "jtatman-dev" 
+def testProject = "jtatman-test"
+def prodProject = "jtatman-prod"
 
 def skopeoToken
 def imageTag
