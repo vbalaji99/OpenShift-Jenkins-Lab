@@ -36,7 +36,7 @@ pipeline {
             steps {
                 script {
                     echo "in script"
-                    openshift.withProject(devProject) {
+                    openshift.withProject("otatman-dev") {
                         skopeoToken = openshift.raw("sa get-token jenkins").out.trim()
                     }
                     echo "got skopeotoken"
