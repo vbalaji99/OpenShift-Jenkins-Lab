@@ -32,21 +32,23 @@ def deployApplication(def appName, def imageTag, def project, def replicas) {
 pipeline {
     agent { label "maven" }
     stages {
-        /*stage("Setup") {
+        stage("Setup") {
             steps {
                 script {
+                    echo "in script"
                     openshift.withProject(devProject) {
                         skopeoToken = openshift.raw("sa get-token jenkins").out.trim()
                     }
+                    echo "got skopeotoken"
                     imageTag = getVersionFromPom()
                 }
             }
-        }*/
-        stage("Build & Test") {
+        }
+        /*stage("Build & Test") {
             steps {
                 sh "mvn clean package"
             }
-        }
+        }*/
         /*stage("Create Image") {
             steps {
                 script {
@@ -62,47 +64,47 @@ pipeline {
                 }
             }
         }*/
-        stage("Deploy Application to Dev") {
+        /*stage("Deploy Application to Dev") {
             steps {
                 script {
                     deployApplication(appName, imageTag, devProject, replicas)
                 }
             }
-        }
-        stage("Copy Image to Test") {
+        }*/
+        /*stage("Copy Image to Test") {
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
                     skopeoCopy(skopeoToken, devProject, testProject, appName, imageTag)
                 }
             }
-        }
-        stage("Deploy Application to Test") {
+        }*/
+        /*stage("Deploy Application to Test") {
             steps {
                 script {
                     deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
-        }
-        stage("Prompt for Prod Approval") {
+        }*/
+        /*stage("Prompt for Prod Approval") {
             steps {
                 input "Deploy to prod?"
             }
-        }
-        stage("Copy image to Prod") {
+        }*/
+        /*stage("Copy image to Prod") {
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
                     skopeoCopy(skopeoToken, devProject, prodProject, appName, imageTag)
                 }
             }
-        }
-        stage("Deploy Application to Prod") {
+        }*/
+        /*stage("Deploy Application to Prod") {
             steps {
                 script {
                     deployApplication(appName, imageTag, prodProject, replicas)
                 }
             }
-        }
+        }*/
     }
 }
