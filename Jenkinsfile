@@ -77,21 +77,21 @@ pipeline {
                 }
             }
         }
-        /*stage("Copy Image to Test") {
+        stage("Copy Image to Test") {
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
                     skopeoCopy(skopeoToken, devProject, testProject, appName, imageTag)
                 }
             }
-        }*/
-        /*stage("Deploy Application to Test") {
+        }
+        stage("Deploy Application to Test") {
             steps {
                 script {
                     deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
-        }*/
+        }
         /*stage("Prompt for Prod Approval") {
             steps {
                 input "Deploy to prod?"
