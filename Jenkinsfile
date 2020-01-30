@@ -97,14 +97,14 @@ pipeline {
                 input "Deploy to prod?"
             }
         }*/
-        /*stage("Copy image to Prod") {
+        stage("Copy image to Prod") {
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
                     skopeoCopy(skopeoToken, devProject, prodProject, appName, imageTag)
                 }
             }
-        }*/
+        }
         /*stage("Deploy Application to Prod") {
             steps {
                 script {
