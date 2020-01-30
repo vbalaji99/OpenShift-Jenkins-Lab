@@ -68,13 +68,13 @@ pipeline {
                 }
             }
         }
-        /*stage("Deploy Application to Dev") {
+        stage("Deploy Application to Dev") {
             steps {
                 script {
                     deployApplication(appName, imageTag, devProject, replicas)
                 }
             }
-        }*/
+        }
         /*stage("Copy Image to Test") {
             agent { label "jenkins-agent-skopeo" }
             steps {
