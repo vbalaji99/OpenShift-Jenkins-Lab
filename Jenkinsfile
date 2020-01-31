@@ -77,11 +77,7 @@ pipeline {
                 }
             }
         }
-<<<<<<< HEAD
-/*        stage("Copy Image to Test") {
-=======
        /* stage("Copy Image to Test") {
->>>>>>> db037deeefc04c5b3b405956944c1fb86e054647
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
@@ -89,11 +85,8 @@ pipeline {
                 }
             }
         }*/
-<<<<<<< HEAD
-       */ stage("Deploy Application to Test") {
-=======
+
         /*stage("Deploy Application to Test") {
->>>>>>> db037deeefc04c5b3b405956944c1fb86e054647
             steps {
                 script {
                     deployApplication(appName, imageTag, testProject, replicas)
