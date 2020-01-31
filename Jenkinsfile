@@ -86,13 +86,13 @@ pipeline {
             }
         }
 
-        /*stage("Deploy Application to Test") {
+        stage("Deploy Application to Test") {
             steps {
                 script {
                     deployApplication(appName, imageTag, testProject, replicas)
                 }
             }
-        }*/
+        }
         /*stage("Prompt for Prod Approval") {
             steps {
                 input "Deploy to prod?"
