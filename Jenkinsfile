@@ -77,14 +77,14 @@ pipeline {
                 }
             }
         }
-       /* stage("Copy Image to Test") {
+        stage("Copy Image to Test") {
             agent { label "jenkins-agent-skopeo" }
             steps {
                 script {
                     skopeoCopy(skopeoToken, devProject, testProject, appName, imageTag)
                 }
             }
-        }*/
+        }
 
         /*stage("Deploy Application to Test") {
             steps {
